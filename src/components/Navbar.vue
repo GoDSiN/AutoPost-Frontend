@@ -23,7 +23,7 @@
           <vs-avatar square>
             <img src="../assets/bg.jpg" alt="" />
           </vs-avatar>
-          
+          <p></p>
         </template>
       </vs-navbar>
       <vs-sidebar absolute v-model="active" :open.sync="activeSidebar">
@@ -47,7 +47,7 @@
           <template #icon>
             <font-awesome-icon icon="plus" />
           </template>
-          Connect Account
+          <a href="/isconnectaccount">Connect Account</a>
         </vs-sidebar-item>
         <vs-sidebar-item id="autoPost">
           <template #icon>
