@@ -13,13 +13,17 @@ import {
     faUserCircle, 
     faUsers,
     faPager,
+    faExternalLinkSquareAlt,
+    faMinus,
+    faTimes,
+    faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css'
 
 Vue.use(Vuesax)
-library.add(faLock, faTachometerAlt, faHistory, faBars, faPlus, faPaperPlane, faStickyNote, faBullseye, faUserCircle, faUsers, faPager)
+library.add(faLock, faTachometerAlt, faHistory, faBars, faPlus, faPaperPlane, faStickyNote, faBullseye, faUserCircle, faUsers, faPager, faExternalLinkSquareAlt, faMinus, faTimes, faTrashAlt)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
