@@ -20,6 +20,9 @@ import {
     faAlignLeft,
     faImages,
     faVideo,
+    faThumbsUp,
+    faComments,
+    faShare,
 } 
 from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -45,6 +48,9 @@ library.add(
     faAlignLeft,
     faImages,
     faVideo,
+    faThumbsUp,
+    faComments,
+    faShare,
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
