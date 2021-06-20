@@ -27,17 +27,24 @@
               </figure>
               <p class="card-header-title has-text-primary-light">Test Name</p>
               <div class="is-left mt-2">
-                <a><font-awesome-icon
-                  icon="minus"
-                  class="m-3 has-text-primary-light"
+                <a @click="active = !active"
+                  ><font-awesome-icon
+                    icon="minus"
+                    class="m-3 has-text-primary-light"
                 /></a>
-                <a><font-awesome-icon
-                  icon="times"
-                  class="m-3 has-text-primary-light"
+                <a
+                  ><font-awesome-icon
+                    icon="times"
+                    class="m-3 has-text-primary-light"
+                    @click="modal = !modal"
                 /></a>
               </div>
             </header>
-            <div class="card-content" style="max-height: 400px; overflow: auto">
+            <div
+              class="card-content"
+              style="max-height: 400px; overflow: auto"
+              v-if="active"
+            >
               <!--card contend-->
               <div class="media">
                 <div class="media-left">
@@ -125,11 +132,43 @@
             </div>
           </div>
         </div>
-
-
-      
       </div>
     </div>
+
+    <!--Modal-->
+    <vs-dialog width="550px" not-center v-model="modal">
+      <template #header>
+        <h4 class="not-margin m-2">
+          <b>Welcome to Vuesax</b>
+        </h4>
+      </template>
+
+      <div class="con-content">
+        <p>Do you want to <b>delete</b> this account from database?</p>
+        <br />
+      </div>
+
+      <template #footer>
+        <div class="con-footer" style="float: right">
+          <vs-button
+            @click="modal = false"
+            transparent
+            style="display: inline-block"
+          >
+            Ok
+          </vs-button>
+          <vs-button
+            @click="modal = false; openNotification()"
+            dark
+            transparent
+            style="display: inline-block"
+          >
+            Cancel
+          </vs-button>
+        </div>
+        <br />
+      </template>
+    </vs-dialog>
   </div>
 </template>
 
@@ -137,6 +176,13 @@
 import Navbar from "@/components/Navbar.vue";
 export default {
   components: { Navbar },
+  data: () => ({
+    active: true,
+    modal: false,
+  }),
+  medthods:{
+
+  }
 };
 </script> 
 
