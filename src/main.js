@@ -26,7 +26,12 @@ import {
     faSortAmountDownAlt,
     faSortAmountDown,
     faArrowsAltV,
-    faUserSecret
+    faUserSecret,
+    faUserCog,
+    faPowerOff,
+    faKey,
+    faCog,
+    faUser,
 } 
 from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -59,6 +64,11 @@ library.add(
     faSortAmountDown,
     faArrowsAltV,
     faUserSecret,
+    faUserCog,
+    faPowerOff,
+    faKey,
+    faCog,
+    faUser,
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
