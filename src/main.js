@@ -23,6 +23,9 @@ import {
     faThumbsUp,
     faComments,
     faShare,
+    faSortAmountDownAlt,
+    faSortAmountDown,
+    faArrowsAltV
 } 
 from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -51,6 +54,9 @@ library.add(
     faThumbsUp,
     faComments,
     faShare,
+    faSortAmountDownAlt,
+    faSortAmountDown,
+    faArrowsAltV,
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
