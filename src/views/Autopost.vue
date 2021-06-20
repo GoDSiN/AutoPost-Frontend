@@ -113,7 +113,7 @@
                     class="input"
                     type="text"
                     placeholder="Paste link"
-                    v-model="urlLink"
+                    v-model="imageUrlLink"
                   />
                 </div>
                 <hr />
@@ -154,7 +154,7 @@
             <!--Video input-->
             <div v-else>
               <div class="mt-5">
-                  <div class="control">
+                <div class="control">
                   <strong><label for="">Select Video</label></strong>
                 </div>
                 <div class="file has-name is-fullwidth">
@@ -196,7 +196,13 @@
                 </div>
                 <div class="file has-name is-fullwidth mt-3">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="resume" accept="image/*" @change="previewVideoThumb"/>
+                    <input
+                      class="file-input"
+                      type="file"
+                      name="resume"
+                      accept="image/*"
+                      @change="previewVideoThumb"
+                    />
                     <span
                       class="
                         file-cta
@@ -244,7 +250,7 @@
                 <div class="media">
                   <div class="media-left">
                     <figure class="image is-48x48">
-                        <!--Profile image-->
+                      <!--Profile image-->
                       <img
                         src="https://bulma.io/images/placeholders/96x96.png"
                         alt="Placeholder image"
@@ -253,7 +259,7 @@
                     </figure>
                   </div>
                   <div class="media-content">
-                      <!--Profile Name-->
+                    <!--Profile Name-->
                     <p class="title is-5">Test Name</p>
                     <p class="subtitle is-6">now Post</p>
                   </div>
@@ -268,15 +274,38 @@
                     <img class="preview" :src="imageData" />
                   </div>
 
-                  <div class="image-preview" v-else-if="urlLink.length > 0">
-                    <img class="preview" :src="urlLink" />
+                  <div class="image-preview" v-if="imageUrlLink.length > 0">
+                    <img class="preview" :src="imageUrlLink" />
                   </div>
 
                   <!--Video preview-->
-                  <div v-else-if="videoData.length > 0">
-                    <video id="video" :src="videoData" :poster="videoThumbData" controls></video>
+                  <div v-if="videoData.length > 0">
+                    <video
+                      id="video"
+                      :src="videoData"
+                      :poster="videoThumbData"
+                      controls
+                    ></video>
                   </div>
 
+                  <!--link preview-->
+                  <div v-if="urlLink.length > 0">
+                    <link-prevue :url="urlLink">
+                      <template slot-scope="props">
+                        <div class="card">
+                          <img
+                            class="card-img-top"
+                            :src="props.img"
+                            :alt="props.title"
+                          />
+                          <div class="card-block">
+                            <h4 class="card-title ml-2 mt-2">{{ props.title }}</h4>
+                            <p class="card-text ml-2 pb-3" style="margin-top: -10px; font-size: 14px">{{ props.description }}</p>
+                          </div>
+                        </div>
+                      </template>
+                    </link-prevue>
+                  </div>
                   <hr />
 
                   <div class="columns">
@@ -316,11 +345,13 @@
 <script>
 import Navbar from "@/components/Navbar.vue";
 import GroupSelect from "@/components/GroupSelect.vue";
+import LinkPrevue from "link-prevue";
 export default {
-  components: { Navbar, GroupSelect },
+  components: { Navbar, GroupSelect, LinkPrevue },
   data: () => ({
     active: 0,
     urlLink: "",
+    imageUrlLink:"",
     text: "",
     imageData: "",
     imageName: "",
@@ -342,7 +373,7 @@ export default {
 
         reader.readAsDataURL(input.files[0]);
         this.imageName = input.files[0].name;
-        console.log(input.files)
+        console.log(input.files);
       }
     },
     previewVideo: function (event) {
