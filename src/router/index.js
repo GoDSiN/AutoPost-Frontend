@@ -34,6 +34,12 @@ const routes = [
     meta: { guess: true },
     component: () => import('../views/ConnectAcc.vue')
   },
+  {
+    path: '/autopost',
+    name: 'Autopost',
+    meta: { guess: true },
+    component: () => import('../views/Autopost.vue')
+  },
 ]
 
 const router = new VueRouter({
