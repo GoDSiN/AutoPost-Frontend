@@ -53,7 +53,7 @@
           <template #icon>
             <font-awesome-icon icon="paper-plane" />
           </template>
-          Autopost
+          <a href="/autopost">Autopost</a>
         </vs-sidebar-item>
         <vs-sidebar-group>
           <template #header>
