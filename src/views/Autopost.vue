@@ -104,7 +104,12 @@
                 <hr />
                 <div class="file has-name is-fullwidth">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="resume" />
+                    <input
+                      class="file-input"
+                      type="file"
+                      name="resume"
+                      @change="previewImage"
+                    />
                     <span
                       class="
                         file-cta
@@ -115,10 +120,11 @@
                     </span>
                     <span class="file-name">
                       <!--file path / filename-->
-                      Screen Shot 2017-07-29 at 15.54.25.png
+                      {{imageName}}
                     </span>
                   </label>
                 </div>
+                <button class="button is-warning mt-5" style="width:100%" @click="clear">Clear All</button>
               </div>
               <GroupSelect />
             </div>
@@ -180,12 +186,15 @@
                     </span>
                   </label>
                 </div>
+                <button class="button is-warning mt-5" style="width:100%" @click="clear">Clear All</button>
               </div>
               <GroupSelect />
             </div>
+            <button class="button is-info mt-5" style="width:100%" @click="clear"><font-awesome-icon icon="paper-plane" class="mr-2"/>Submit</button>
           </div>
         </div>
 
+        <!--Preview-->
         <div class="column mt-5">
           <div class="box">
             <div class="">
@@ -201,29 +210,49 @@
                       <img
                         src="https://bulma.io/images/placeholders/96x96.png"
                         alt="Placeholder image"
+                        class="is-rounded"
                       />
                     </figure>
                   </div>
                   <div class="media-content">
-                    <p class="title is-4">Test Name</p>
+                    <p class="title is-5">Test Name</p>
                     <p class="subtitle is-6">now Post</p>
                   </div>
                 </div>
 
                 <div class="content">
-                  <p>{{text}}</p><hr>
+                  <p>{{ text }}</p>
+                  
+                  <div class="image-preview" v-if="imageData.length > 0">
+                    <img class="preview" :src="imageData" />
+                  </div>
+
+                  <div class="image-preview" v-else-if="urlLink.length > 0">
+                    <img class="preview" :src='urlLink' />
+                  </div>
+                  <hr />
+                  
                   <div class="columns">
-                      <div class="column">
-                          <p>Like</p> 
-                      </div>
+                    <div class="column">
+                      <p>
+                        <font-awesome-icon icon="thumbs-up" class="mr-2" />Like
+                      </p>
+                    </div>
 
-                      <div class="column">
-                          <p>Comment</p>
-                      </div>
+                    <div class="column">
+                      <p>
+                        <font-awesome-icon
+                          icon="comments"
+                          class="mr-2"
+                        />Comment
+                      </p>
+                    </div>
 
-                      <div class="column">
-                          <p>Share</p>
-                      </div>
+                    <div class="column">
+                      <p>
+                        <font-awesome-icon icon="share" class="mr-2" />Share
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -231,6 +260,7 @@
             <!---->
           </div>
         </div>
+        <!---->
       </div>
     </div>
   </div>
@@ -245,9 +275,32 @@ export default {
     active: 0,
     urlLink: "",
     text: "",
+    imageData: "",
+    imageName:"",
   }),
+  methods: {
+    previewImage: function (event) {
+      var input = event.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.imageData = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+        this.imageName = input.files[0].name
+      }
+    },
+    clear(){
+        this.imageName = '',
+        this.imageData = '',
+        this.text = '',
+        this.urlLink = ''
+    }
+  },
 };
 </script>
 
 <style>
+
 </style>
