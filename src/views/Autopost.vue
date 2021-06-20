@@ -214,7 +214,7 @@
                   <p>{{text}}</p><hr>
                   <div class="columns">
                       <div class="column">
-                          <p>Like</p>
+                          <p>Like</p> 
                       </div>
 
                       <div class="column">
