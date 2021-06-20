@@ -17,13 +17,15 @@
         <template #right>
           <!--Select Account-->
           <vs-select placeholder="Select" v-model="value" style="margin: 10px">
-            <vs-option label="Test Test" value="1"> Test Test </vs-option>
+            <vs-option label="Test 1" value="1"> Test 1 </vs-option>
+            <vs-option label="Test 2" value="2"> Test 2 </vs-option>
+            <vs-option label="Test 3" value="3"> Test 3 </vs-option>
           </vs-select>
         </template>
       </vs-navbar>
       <vs-sidebar absolute v-model="active" :open.sync="activeSidebar">
         <template #logo>
-          <!-- ...img logo -->
+          <!-- web logo -->
           <img src="../assets/Test.png" />
         </template>
 
@@ -141,7 +143,7 @@ export default {
     active: "",
     isActive: false,
     activeSidebar: false,
-    value: "",
+    value: "1",
   }),
 };
 </script>
