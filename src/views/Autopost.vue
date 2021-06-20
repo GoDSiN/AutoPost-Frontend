@@ -9,12 +9,16 @@
               <strong><p>Autopost</p></strong>
             </div>
             <hr />
+            <!--Header-->
             <div class="columns">
               <div class="column is-3">
                 <vs-button
                   transparent
                   :active="active == 0"
-                  @click="active = 0"
+                  @click="
+                    active = 0;
+                    clear();
+                  "
                   style="width: 100%; font-size: 16px"
                 >
                   <font-awesome-icon icon="align-left" class="mr-2" /> Text
@@ -25,7 +29,10 @@
                 <vs-button
                   transparent
                   :active="active == 1"
-                  @click="active = 1"
+                  @click="
+                    active = 1;
+                    clear();
+                  "
                   style="width: 100%; font-size: 16px"
                 >
                   <font-awesome-icon
@@ -39,7 +46,10 @@
                 <vs-button
                   transparent
                   :active="active == 2"
-                  @click="active = 2"
+                  @click="
+                    active = 2;
+                    clear();
+                  "
                   style="width: 100%; font-size: 16px"
                 >
                   <font-awesome-icon icon="images" class="mr-2" />Image
@@ -50,7 +60,10 @@
                 <vs-button
                   transparent
                   :active="active == 3"
-                  @click="active = 3"
+                  @click="
+                    active = 3;
+                    clear();
+                  "
                   style="width: 100%; font-size: 16px"
                 >
                   <font-awesome-icon icon="video" class="mr-2" />Video
@@ -60,6 +73,7 @@
 
             <!--Body-->
             <div>
+              <!--Text Area-->
               <strong><label for="">Text</label></strong>
               <div class="control">
                 <textarea
@@ -70,11 +84,11 @@
               </div>
             </div>
 
-            <!-- V-IF Body-->
             <div v-if="active === 0">
               <GroupSelect />
             </div>
 
+            <!--Link input-->
             <div v-else-if="active === 1">
               <div class="mt-5">
                 <div class="control">
@@ -90,6 +104,7 @@
               <GroupSelect />
             </div>
 
+            <!--Image input-->
             <div v-else-if="active === 2">
               <div class="mt-5">
                 <div class="control">
@@ -108,6 +123,7 @@
                       class="file-input"
                       type="file"
                       name="resume"
+                      accept="image/*"
                       @change="previewImage"
                     />
                     <span
@@ -120,30 +136,34 @@
                     </span>
                     <span class="file-name">
                       <!--file path / filename-->
-                      {{imageName}}
+                      {{ imageName }}
                     </span>
                   </label>
                 </div>
-                <button class="button is-warning mt-5" style="width:100%" @click="clear">Clear All</button>
+                <button
+                  class="button is-warning mt-5"
+                  style="width: 100%"
+                  @click="clear"
+                >
+                  Clear All
+                </button>
               </div>
               <GroupSelect />
             </div>
 
+            <!--Video input-->
             <div v-else>
               <div class="mt-5">
-                <div class="control">
-                  <strong><label for="">Video URL</label></strong>
-                  <input
-                    class="input"
-                    type="text"
-                    placeholder="Paste link"
-                    v-model="urlLink"
-                  />
-                </div>
-                <hr />
                 <div class="file has-name is-fullwidth">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="resume" />
+                    <input
+                      class="file-input"
+                      id="file-input"
+                      type="file"
+                      name="resume"
+                      accept="video/*"
+                      @change="previewVideo"
+                    />
                     <span
                       class="
                         file-cta
@@ -154,11 +174,13 @@
                     </span>
                     <span class="file-name">
                       <!--file path / filename-->
-                      Screen Shot 2017-07-29 at 15.54.25.png
+                      {{ videoName }}
                     </span>
                   </label>
                 </div>
               </div>
+
+              <!--Video thumbnail-->
               <div class="mt-5">
                 <div class="control">
                   <strong><label for="">Video thumbnail URL</label></strong>
@@ -166,12 +188,12 @@
                     class="input"
                     type="text"
                     placeholder="Paste link"
-                    v-model="urlLink"
+                    v-model="videoThumbData"
                   />
                 </div>
                 <div class="file has-name is-fullwidth mt-3">
                   <label class="file-label">
-                    <input class="file-input" type="file" name="resume" />
+                    <input class="file-input" type="file" name="resume" accept="image/*" @change="previewVideoThumb"/>
                     <span
                       class="
                         file-cta
@@ -182,15 +204,27 @@
                     </span>
                     <span class="file-name">
                       <!--file path / filename-->
-                      Screen Shot 2017-07-29 at 15.54.25.png
+                      {{ videoThumbName }}
                     </span>
                   </label>
                 </div>
-                <button class="button is-warning mt-5" style="width:100%" @click="clear">Clear All</button>
+                <button
+                  class="button is-warning mt-5"
+                  style="width: 100%"
+                  @click="clear"
+                >
+                  Clear All
+                </button>
               </div>
               <GroupSelect />
             </div>
-            <button class="button is-info mt-5" style="width:100%" @click="clear"><font-awesome-icon icon="paper-plane" class="mr-2"/>Submit</button>
+            <button
+              class="button is-info mt-5"
+              style="width: 100%"
+              @click="clear"
+            >
+              <font-awesome-icon icon="paper-plane" class="mr-2" />Submit
+            </button>
           </div>
         </div>
 
@@ -221,17 +255,25 @@
                 </div>
 
                 <div class="content">
+                  <!--Text preview-->
                   <p>{{ text }}</p>
-                  
+
+                  <!--Image preview-->
                   <div class="image-preview" v-if="imageData.length > 0">
                     <img class="preview" :src="imageData" />
                   </div>
 
                   <div class="image-preview" v-else-if="urlLink.length > 0">
-                    <img class="preview" :src='urlLink' />
+                    <img class="preview" :src="urlLink" />
                   </div>
+
+                  <!--Video preview-->
+                  <div v-else-if="videoData.length > 0">
+                    <video id="video" :src="videoData" :poster="videoThumbData" controls></video>
+                  </div>
+
                   <hr />
-                  
+
                   <div class="columns">
                     <div class="column">
                       <p>
@@ -276,7 +318,13 @@ export default {
     urlLink: "",
     text: "",
     imageData: "",
-    imageName:"",
+    imageName: "",
+    videoName: "",
+    videoData: "",
+    videoThumbData: "",
+    videoThumbName: "",
+    videoUrlLink: "",
+    videoUrlThumb: "",
   }),
   methods: {
     previewImage: function (event) {
@@ -288,19 +336,45 @@ export default {
         };
 
         reader.readAsDataURL(input.files[0]);
-        this.imageName = input.files[0].name
+        this.imageName = input.files[0].name;
+        console.log(input.files)
       }
     },
-    clear(){
-        this.imageName = '',
-        this.imageData = '',
-        this.text = '',
-        this.urlLink = ''
-    }
+    previewVideo: function (event) {
+      const input = event.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.videoData = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+        this.videoName = input.files[0].name;
+      }
+    },
+    previewVideoThumb: function (event) {
+      const input = event.target;
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = (e) => {
+          this.videoThumbData = e.target.result;
+        };
+        reader.readAsDataURL(input.files[0]);
+        this.videoThumbName = input.files[0].name;
+      }
+    },
+    clear() {
+      (this.imageName = ""),
+        (this.imageData = ""),
+        (this.text = ""),
+        (this.urlLink = ""),
+        (this.videoName = ""),
+        (this.videoData = ""),
+        (this.videoThumbData = ""),
+        (this.videoThumbName = "");
+    },
   },
 };
 </script>
 
 <style>
-
 </style>
