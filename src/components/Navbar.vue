@@ -35,25 +35,25 @@
           <template #icon>
             <font-awesome-icon icon="tachometer-alt" />
           </template>
-          <a href="/dashboard">Home</a>
+          <a href="/dashboard" style="color:#555555">Home</a>
         </vs-sidebar-item>
         <vs-sidebar-item id="history">
           <template #icon>
             <font-awesome-icon icon="history" />
           </template>
-          <a href="/history">Payment History</a>
+          <a href="/history" style="color:#555555">Payment History</a>
         </vs-sidebar-item>
         <vs-sidebar-item id="connect">
           <template #icon>
             <font-awesome-icon icon="plus" />
           </template>
-          <a href="/isconnectaccount">Connect Account</a>
+          <a href="/isconnectaccount" style="color:#555555">Connect Account</a>
         </vs-sidebar-item>
         <vs-sidebar-item id="autoPost">
           <template #icon>
             <font-awesome-icon icon="paper-plane" />
           </template>
-          <a href="/autopost">Autopost</a>
+          <a href="/autopost" style="color:#555555">Autopost</a>
         </vs-sidebar-item>
         <vs-sidebar-group>
           <template #header>
@@ -61,7 +61,7 @@
               <template #icon>
                 <font-awesome-icon icon="sticky-note" />
               </template>
-              Report
+              <p style="color:#555555">Report</p>
             </vs-sidebar-item>
           </template>
 
@@ -69,7 +69,7 @@
             <template #icon>
               <font-awesome-icon icon="bullseye" />
             </template>
-            Autopost Report
+            <a style="color:#555555">Autopost Report</a>
           </vs-sidebar-item>
         </vs-sidebar-group>
       </vs-sidebar>
