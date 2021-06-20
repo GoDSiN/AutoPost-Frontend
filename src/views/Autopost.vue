@@ -154,6 +154,9 @@
             <!--Video input-->
             <div v-else>
               <div class="mt-5">
+                  <div class="control">
+                  <strong><label for="">Select Video</label></strong>
+                </div>
                 <div class="file has-name is-fullwidth">
                   <label class="file-label">
                     <input
@@ -241,6 +244,7 @@
                 <div class="media">
                   <div class="media-left">
                     <figure class="image is-48x48">
+                        <!--Profile image-->
                       <img
                         src="https://bulma.io/images/placeholders/96x96.png"
                         alt="Placeholder image"
@@ -249,6 +253,7 @@
                     </figure>
                   </div>
                   <div class="media-content">
+                      <!--Profile Name-->
                     <p class="title is-5">Test Name</p>
                     <p class="subtitle is-6">now Post</p>
                   </div>
