@@ -69,7 +69,7 @@
             <template #icon>
               <font-awesome-icon icon="bullseye" />
             </template>
-            <a style="color:#555555">Autopost Report</a>
+            <a href="/report" style="color:#555555">Autopost Report</a>
           </vs-sidebar-item>
         </vs-sidebar-group>
       </vs-sidebar>
