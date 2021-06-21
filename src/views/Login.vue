@@ -49,7 +49,7 @@
                           class="mt-3"
                         >
                           <template #icon>
-                            <i class="bx bxs-lock"></i>
+                            <font-awesome-icon icon="key" style="opacity:0.8" />
                           </template>
                         </vs-input>
 
@@ -86,7 +86,7 @@
                           class="mt-3"
                         >
                           <template #icon>
-                            <i class="bx bxs-lock"></i>
+                            <font-awesome-icon icon="key" style="opacity:0.8" />
                           </template>
                         </vs-input>
 
@@ -97,7 +97,7 @@
                           class="mt-3"
                         >
                           <template #icon>
-                            <i class="bx bxs-lock"></i>
+                            <font-awesome-icon icon="key" style="opacity:0.8" />
                           </template>
                         </vs-input>
 
