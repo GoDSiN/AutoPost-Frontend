@@ -139,7 +139,7 @@
     <vs-dialog width="550px" not-center v-model="modal">
       <template #header>
         <h4 class="not-margin m-2">
-          <b>Welcome to Vuesax</b>
+          <b>Confirm</b>
         </h4>
       </template>
 
