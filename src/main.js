@@ -32,6 +32,7 @@ import {
     faKey,
     faCog,
     faUser,
+    faCheck,
 } 
 from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -69,6 +70,7 @@ library.add(
     faKey,
     faCog,
     faUser,
+    faCheck,
     )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
