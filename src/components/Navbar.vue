@@ -95,14 +95,14 @@
             <template #icon>
               <font-awesome-icon icon="user" />
             </template>
-            <a href="/#" style="color: #555555">My Profile</a>
+            <a href="/myprofile" style="color: #555555">My Profile</a>
           </vs-sidebar-item>
 
           <vs-sidebar-item id="accSetting">
             <template #icon>
               <font-awesome-icon icon="cog" />
             </template>
-            <a href="/#" style="color: #555555">Account Setting</a>
+            <a href="/accsetting" style="color: #555555">Account Setting</a>
           </vs-sidebar-item>
 
           <vs-sidebar-item id="cp">
