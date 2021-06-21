@@ -2,6 +2,8 @@
   <div class="mt-5">
     <div>
       <strong><p>Post to your Pages & Groups</p></strong>
+
+      <!--Pages-->
       <div class="columns">
         <div class="column">
           <strong
@@ -17,6 +19,7 @@
           </div>
         </div>
 
+        <!--Group-->
         <div class="column">
           <strong
             ><p class="mt-5" style="display: inline-block">
@@ -32,6 +35,7 @@
         </div>
       </div>
 
+      <!--Schedule-->
       <div class="columns">
         <div class="column">
           <strong><p>Schedule</p></strong>
@@ -56,6 +60,7 @@
             </label>
           </div>
 
+          <!--Select Time-->
           <div v-if="schedule === 'schedule'">
             <div class="columns">
               <div class="column mt-5">
@@ -67,6 +72,7 @@
                 />
               </div>
 
+              <!--Select Time Zone-->
               <div class="column mt-5">
                 <strong><label for="">TimeZone</label><br></strong>
                 <div class="select mt-3 is-small">
@@ -76,6 +82,7 @@
                   </select>
                 </div>
               </div>
+
             </div>
           </div>
         </div>

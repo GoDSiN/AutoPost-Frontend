@@ -9,9 +9,11 @@
               <strong><p>Autopost</p></strong>
             </div>
             <hr />
+
             <!--Header-->
             <div class="columns">
               <div class="column is-3">
+                <!--Text button-->
                 <vs-button
                   transparent
                   :active="active == 0"
@@ -26,6 +28,7 @@
               </div>
 
               <div class="column is-3">
+                <!--Link button-->
                 <vs-button
                   transparent
                   :active="active == 1"
@@ -43,6 +46,7 @@
               </div>
 
               <div class="column is-3">
+                <!--Image button-->
                 <vs-button
                   transparent
                   :active="active == 2"
@@ -57,6 +61,7 @@
               </div>
 
               <div class="column is-3">
+                <!--Video button-->
                 <vs-button
                   transparent
                   :active="active == 3"
@@ -109,16 +114,18 @@
               <div class="mt-5">
                 <div class="control">
                   <strong><label for="">Image URL</label></strong>
+                  <!--URL link-->
                   <input
                     class="input"
                     type="text"
                     placeholder="Paste link"
-                    v-model="imageUrlLink"
+                    v-model="imageData"
                   />
                 </div>
                 <hr />
                 <div class="file has-name is-fullwidth">
                   <label class="file-label">
+                    <!--Choose image file-->
                     <input
                       class="file-input"
                       type="file"
@@ -135,7 +142,7 @@
                       <span class="file-label"> Choose a file… </span>
                     </span>
                     <span class="file-name">
-                      <!--file path / filename-->
+                      <!--filename-->
                       {{ imageName }}
                     </span>
                   </label>
@@ -159,11 +166,11 @@
                 </div>
                 <div class="file has-name is-fullwidth">
                   <label class="file-label">
+                    <!--Choose Video File-->
                     <input
                       class="file-input"
                       id="file-input"
                       type="file"
-                      name="resume"
                       accept="video/*"
                       @change="previewVideo"
                     />
@@ -187,6 +194,7 @@
               <div class="mt-5">
                 <div class="control">
                   <strong><label for="">Video thumbnail URL</label></strong>
+                  <!--Thumbnail URL Link-->
                   <input
                     class="input"
                     type="text"
@@ -194,21 +202,17 @@
                     v-model="videoThumbData"
                   />
                 </div>
-                <div class="file has-name is-fullwidth mt-3">
+
+                <div class="file has-name is-fullwidth mt-3 is-info">
                   <label class="file-label">
+                    <!--Choose image thumbnail file-->
                     <input
                       class="file-input"
                       type="file"
-                      name="resume"
                       accept="image/*"
                       @change="previewVideoThumb"
                     />
-                    <span
-                      class="
-                        file-cta
-                        has-background-info has-text-primary-light
-                      "
-                    >
+                    <span class="file-cta">
                       <span class="file-label"> Choose a file… </span>
                     </span>
                     <span class="file-name">
@@ -217,6 +221,8 @@
                     </span>
                   </label>
                 </div>
+
+                <!--Clear button-->
                 <button
                   class="button is-warning mt-5"
                   style="width: 100%"
@@ -261,7 +267,7 @@
                   <div class="media-content">
                     <!--Profile Name-->
                     <p class="title is-5">Test Name</p>
-                    <p class="subtitle is-6">now Post</p>
+                    <p class="subtitle is-6">now Posting</p>
                   </div>
                 </div>
 
@@ -274,9 +280,9 @@
                     <img class="preview" :src="imageData" />
                   </div>
 
-                  <div class="image-preview" v-if="imageUrlLink.length > 0">
+                  <!-- <div class="image-preview" v-if="imageUrlLink.length > 0">
                     <img class="preview" :src="imageUrlLink" />
-                  </div>
+                  </div> -->
 
                   <!--Video preview-->
                   <div v-if="videoData.length > 0">
@@ -290,6 +296,8 @@
 
                   <!--link preview-->
                   <div v-if="urlLink.length > 0">
+
+                    <!--link prevue card template-->
                     <link-prevue :url="urlLink">
                       <template slot-scope="props">
                         <div class="card">
@@ -299,8 +307,15 @@
                             :alt="props.title"
                           />
                           <div class="card-block">
-                            <h4 class="card-title ml-2 mt-2">{{ props.title }}</h4>
-                            <p class="card-text ml-2 pb-3" style="margin-top: -10px; font-size: 14px">{{ props.description }}</p>
+                            <h4 class="card-title ml-2 mt-2">
+                              {{ props.title }}
+                            </h4>
+                            <p
+                              class="card-text ml-2 pb-3"
+                              style="margin-top: -10px; font-size: 14px"
+                            >
+                              {{ props.description }}
+                            </p>
                           </div>
                         </div>
                       </template>
@@ -308,6 +323,7 @@
                   </div>
                   <hr />
 
+                  <!--Fake Like, Comment and Share Button-->
                   <div class="columns">
                     <div class="column">
                       <p>
@@ -351,7 +367,6 @@ export default {
   data: () => ({
     active: 0,
     urlLink: "",
-    imageUrlLink:"",
     text: "",
     imageData: "",
     imageName: "",
@@ -359,8 +374,6 @@ export default {
     videoData: "",
     videoThumbData: "",
     videoThumbName: "",
-    videoUrlLink: "",
-    videoUrlThumb: "",
   }),
   methods: {
     previewImage: function (event) {
@@ -373,7 +386,6 @@ export default {
 
         reader.readAsDataURL(input.files[0]);
         this.imageName = input.files[0].name;
-        console.log(input.files);
       }
     },
     previewVideo: function (event) {
@@ -399,18 +411,21 @@ export default {
       }
     },
     clear() {
+      (this.urlLink = ""),
+      (this.text = ""),
       (this.imageName = ""),
-        (this.imageData = ""),
-        (this.text = ""),
-        (this.urlLink = ""),
-        (this.videoName = ""),
-        (this.videoData = ""),
-        (this.videoThumbData = ""),
-        (this.videoThumbName = "");
-    },
+      (this.imageData = ""),
+      (this.videoName = ""),
+      (this.videoData = ""),
+      (this.videoThumbData = ""),
+      (this.videoThumbName = "")
+    }
   },
 };
 </script>
 
 <style>
+  input[type='file'] {
+    opacity:0    
+  }
 </style>
