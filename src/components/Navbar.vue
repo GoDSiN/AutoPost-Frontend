@@ -34,7 +34,7 @@
           <template #icon>
             <font-awesome-icon icon="tachometer-alt" />
           </template>
-          <a href="/dashboard" style="color:#555555">Home</a>
+          <a href="/dashboard" style="color: #555555">Home</a>
         </vs-sidebar-item>
 
         <!--History-->
@@ -42,7 +42,7 @@
           <template #icon>
             <font-awesome-icon icon="history" />
           </template>
-          <a href="/history" style="color:#555555">Payment History</a>
+          <a href="/history" style="color: #555555">Payment History</a>
         </vs-sidebar-item>
 
         <!--ConnectAcc-->
@@ -50,7 +50,7 @@
           <template #icon>
             <font-awesome-icon icon="plus" />
           </template>
-          <a href="/isconnectaccount" style="color:#555555">Connect Account</a>
+          <a href="/isconnectaccount" style="color: #555555">Connect Account</a>
         </vs-sidebar-item>
 
         <!--Autopost-->
@@ -58,7 +58,7 @@
           <template #icon>
             <font-awesome-icon icon="paper-plane" />
           </template>
-          <a href="/autopost" style="color:#555555">Autopost</a>
+          <a href="/autopost" style="color: #555555">Autopost</a>
         </vs-sidebar-item>
 
         <!--Report-->
@@ -68,7 +68,7 @@
               <template #icon>
                 <font-awesome-icon icon="sticky-note" />
               </template>
-              <p style="color:#555555">Report</p>
+              <p style="color: #555555">Report</p>
             </vs-sidebar-item>
           </template>
 
@@ -76,7 +76,7 @@
             <template #icon>
               <font-awesome-icon icon="bullseye" />
             </template>
-            <a href="/report" style="color:#555555">Autopost Report</a>
+            <a href="/report" style="color: #555555">Autopost Report</a>
           </vs-sidebar-item>
         </vs-sidebar-group>
 
@@ -87,7 +87,7 @@
               <template #icon>
                 <font-awesome-icon icon="user-cog" />
               </template>
-              <p style="color:#555555">Setting</p>
+              <p style="color: #555555">Setting</p>
             </vs-sidebar-item>
           </template>
 
@@ -95,28 +95,28 @@
             <template #icon>
               <font-awesome-icon icon="user" />
             </template>
-            <a href="/#" style="color:#555555">My Profile</a>
+            <a href="/#" style="color: #555555">My Profile</a>
           </vs-sidebar-item>
 
           <vs-sidebar-item id="accSetting">
             <template #icon>
               <font-awesome-icon icon="cog" />
             </template>
-            <a href="/#" style="color:#555555">Account Setting</a>
+            <a href="/#" style="color: #555555">Account Setting</a>
           </vs-sidebar-item>
 
           <vs-sidebar-item id="cp">
             <template #icon>
               <font-awesome-icon icon="key" />
             </template>
-            <a href="/#" style="color:#555555">Change Password</a>
+            <a style="color: #555555" @click="active2 = !active2">Change Password</a>
           </vs-sidebar-item>
 
           <vs-sidebar-item id="logout">
             <template #icon>
               <font-awesome-icon icon="power-off" />
             </template>
-            <a href="/#" style="color:#555555">Logout</a>
+            <a href="/#" style="color: #555555">Logout</a>
           </vs-sidebar-item>
         </vs-sidebar-group>
 
@@ -124,14 +124,62 @@
         <template #footer>
           <vs-row justify="space-between">
             <vs-avatar class="ml-0">
-              <img src="../assets/bg.jpg" alt="">
+              <img src="../assets/bg.jpg" alt="" />
             </vs-avatar>
             <!--Profile name-->
-            <p class="mt-3 mr-3" id='name'><b>Test Name</b></p>
+            <p class="mt-3 mr-3" id="name"><b>Test Name</b></p>
           </vs-row>
         </template>
-
       </vs-sidebar>
+
+      <!--Change Password-->
+      <template>
+        <vs-dialog blur v-model="active2">
+          <template #header>
+            <h4 class="not-margin"><b>Change Password</b></h4>
+          </template>
+
+          <div class="con-form">
+            <vs-input
+              type="password"
+              v-model="password"
+              placeholder="Old Password"
+              class="mt-3"
+            >
+              <template #icon>
+                <font-awesome-icon icon="key" style="opacity: 0.8" />
+              </template>
+            </vs-input>
+
+            <vs-input
+              type="password"
+              v-model="password"
+              placeholder="New Password"
+              class="mt-3"
+            >
+              <template #icon>
+                <font-awesome-icon icon="key" style="opacity: 0.8" />
+              </template>
+            </vs-input>
+
+            <vs-input
+              type="password"
+              v-model="password"
+              placeholder="Confirm Password"
+              class="mt-3"
+            >
+              <template #icon>
+                <font-awesome-icon icon="key" style="opacity: 0.8" />
+              </template>
+            </vs-input>
+          </div>
+          <template #footer>
+            <div class="footer-dialog">
+              <vs-button block> Confirm </vs-button>
+            </div>
+          </template>
+        </vs-dialog>
+      </template>
     </div>
   </div>
 </template>
@@ -141,6 +189,7 @@ export default {
   name: "Navbar",
   data: () => ({
     active: "",
+    active2: false,
     isActive: false,
     activeSidebar: false,
     value: "1",
@@ -148,11 +197,14 @@ export default {
 };
 </script>
 
-<style scoped>
-    #name {
-      text-overflow: ellipsis; 
-      overflow: hidden;
-      width:100px;
-      white-space: nowrap
-    }
+<style>
+#name {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100px;
+  white-space: nowrap;
+}
+.vs-input{
+  width: 100%;
+}
 </style>
