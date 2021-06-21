@@ -5,42 +5,54 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Login',
+    path: "/",
+    name: "Login",
     meta: { guess: true },
-    component: () => import('../views/Login.vue')
+    component: () => import("../views/Login.vue"),
   },
   {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: "/dashboard",
+    name: "dashboard",
     meta: { guess: true },
-    component: () => import('../views/Dashboard.vue')
+    component: () => import("../views/Dashboard.vue"),
   },
   {
-    path: '/history',
-    name: 'History',
+    path: "/history",
+    name: "History",
     meta: { guess: true },
-    component: () => import('../views/History.vue')
+    component: () => import("../views/History.vue"),
   },
   {
-    path: '/isconnectaccount',
-    name: 'ConnectAcc',
+    path: "/isconnectaccount",
+    name: "ConnectAcc",
     meta: { guess: true },
-    component: () => import('../views/ConnectAcc.vue')
+    component: () => import("../views/ConnectAcc.vue"),
   },
   {
-    path: '/autopost',
-    name: 'Autopost',
+    path: "/autopost",
+    name: "Autopost",
     meta: { guess: true },
-    component: () => import('../views/Autopost.vue')
+    component: () => import("../views/Autopost.vue"),
   },
   {
-    path: '/report',
-    name: 'Report',
+    path: "/report",
+    name: "Report",
     meta: { guess: true },
-    component: () => import('../views/Report.vue')
+    component: () => import("../views/Report.vue"),
   },
-]
+  {
+    path: "/accsetting",
+    name: "AccountSetting",
+    meta: { guess: true },
+    component: () => import("../views/AccountSetting.vue"),
+  },
+  {
+    path: "/myprofile",
+    name: "Myprofile",
+    meta: { guess: true },
+    component: () => import("../views/Myprofile.vue"),
+  },
+];
 
 const router = new VueRouter({
     mode: 'history',
