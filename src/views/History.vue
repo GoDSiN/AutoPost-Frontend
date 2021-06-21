@@ -42,7 +42,7 @@
 
         <!--History Table-->
         <div>
-          <table class="table" style="width:100%">
+          <table class="table" style="width: 100%">
             <thead>
               <tr>
                 <th>First Name</th>
@@ -59,17 +59,13 @@
               <div style="height: 700px"></div>
             </tbody>
           </table>
-          <nav
-            class="pagination is-centered"
-            role="navigation"
-            aria-label="pagination"
-          >
-            <a class="pagination-previous">Previous</a>
-            <a class="pagination-next">Next page</a>
-            <ul class="pagination-list">
-              <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-            </ul>
-          </nav>
+
+          <!--pagination-->
+          <template>
+            <div class="center">
+              <vs-pagination v-model="page" :length="20" />
+            </div>
+          </template>
         </div>
       </div>
     </div>
@@ -80,6 +76,9 @@
 import Navbar from "@/components/Navbar.vue";
 export default {
   components: { Navbar },
+  data:() => ({
+      page: 1
+    })
 };
 </script>
 

@@ -27,17 +27,13 @@
             <!--Blank Space-->
           </tbody>
         </table>
-        <nav
-          class="pagination is-small"
-          role="navigation"
-          aria-label="pagination"
-        >
-          <a class="pagination-previous">Previous</a>
-          <a class="pagination-next">Next page</a>
-          <ul class="pagination-list">
-              <p>Showing 0 to 0 of 0 entries</p>
-          </ul>
-        </nav>
+
+        <!--pagination-->
+        <template>
+          <div class="center">
+            <vs-pagination v-model="page" :length="20" />
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -47,6 +43,9 @@
 import Navbar from "@/components/Navbar.vue";
 export default {
   components: { Navbar },
+  data: () => ({
+    page: 1,
+  }),
 };
 </script>
 
